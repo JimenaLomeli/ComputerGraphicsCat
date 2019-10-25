@@ -45,15 +45,153 @@ void scale(float sx, float sy, float sz, GLfloat matrix[]) {
   }
 }
 
+void rotateX(float angle, GLfloat matrix[]) {
+  for (int i = 0; i < 876; i++) {
+    float y = matrix[i*3+1];
+    float z = matrix[i*3+2];
+    y = matrix[i*3+1]*cos(angle*M_PI/180.0) - matrix[i*3+2]*sin(angle*M_PI/180.0);
+    z = matrix[i*3+2]*cos(angle*M_PI/180.0) + matrix[i*3+1]*sin(angle*M_PI/180.0);
+    
+    matrix[i*3+2] = z;
+    matrix[i*3+1] = y;
+  }
+}
+
+void rotateY(float angle, GLfloat matrix[]) {
+  for (int i = 0; i < 876; i++) {
+    float x = matrix[i*3];
+    float z = matrix[i*3+2];
+    z = matrix[i*3+2]*cos(angle*M_PI/180.0) - matrix[i*3]*sin(angle*M_PI/180.0);
+    x = matrix[i*3]*cos(angle*M_PI/180.0) + matrix[i*3+2]*sin(angle*M_PI/180.0);
+    
+    matrix[i*3] = x;
+    matrix[i*3+2] = z;
+  }
+}
+
+
 void rotateZ(float angle, GLfloat matrix[]) {
   for (int i = 0; i < 876; i++) {
     float x = matrix[i*3];
     float y = matrix[i*3+1];
-    x = x*cos(angle*M_PI/180.0) - y*sin(angle*M_PI/180.0);
-    y = y*cos(angle*M_PI/180.0) + x*sin(angle*M_PI/180.0);
+    x = matrix[i*3]*cos(angle*M_PI/180.0) - matrix[i*3+1]*sin(angle*M_PI/180.0);
+    y = matrix[i*3+1]*cos(angle*M_PI/180.0) + matrix[i*3]*sin(angle*M_PI/180.0);
     
     matrix[i*3] = x;
     matrix[i*3+1] = y;
+  }
+}
+
+// ----------------------------
+// Keyboard control made by us
+// ----------------------------
+
+char operation = 't', axis = 'x';
+
+void controlModel(GLfloat matrix[]) {
+  if (glfwGetKey( window, GLFW_KEY_T ) == GLFW_PRESS) {
+    operation = 't';
+  }
+  if (glfwGetKey( window, GLFW_KEY_R ) == GLFW_PRESS) {
+    operation = 'r';
+  }
+  if (glfwGetKey( window, GLFW_KEY_S ) == GLFW_PRESS) {
+    operation = 's';
+  }
+  if (glfwGetKey( window, GLFW_KEY_X ) == GLFW_PRESS) {
+    axis = 'x';
+  }
+  if (glfwGetKey( window, GLFW_KEY_Y ) == GLFW_PRESS) {
+    axis = 'y';
+  }
+  if (glfwGetKey( window, GLFW_KEY_Z ) == GLFW_PRESS) {
+    axis = 'z';
+  }
+  // Move up
+  if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
+    float dx, dy, dz;
+    if (operation == 't') {
+      if (axis == 'x') {
+        dx = 0.01;
+        dy = 0;
+        dz = 0;
+      } else if (axis == 'y') {
+        dx = 0;
+        dy = 0.01;
+        dz = 0;
+      } else if (axis == 'z') {
+        dx = 0;
+        dy = 0;
+        dz = 0.01;
+      }
+      translate(dx, dy, dz, matrix);
+    } else if (operation == 'r') {
+      if (axis == 'x') {
+        rotateX(1, matrix);
+      } else if (axis == 'y') {
+        rotateY(1, matrix);
+      } else if (axis == 'z') {
+        rotateZ(1, matrix);
+      }
+    } else if (operation == 's') {
+      if (axis == 'x') {
+        dx = 1.01;
+        dy = 1;
+        dz = 1;
+      } else if (axis == 'y') {
+        dx = 1;
+        dy = 1.01;
+        dz = 1;
+      } else if (axis == 'z') {
+        dx = 1;
+        dy = 1;
+        dz = 1.01;
+      }
+      scale(dx, dy, dz, matrix);
+    }
+  }
+  // Move down
+  if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS){
+    float dx, dy, dz;
+    if (operation == 't') {
+      if (axis == 'x') {
+        dx = 0.01;
+        dy = 0;
+        dz = 0;
+      } else if (axis == 'y') {
+        dx = 0;
+        dy = 0.01;
+        dz = 0;
+      } else if (axis == 'z') {
+        dx = 0;
+        dy = 0;
+        dz = 0.01;
+      }
+      translate(-dx, -dy, -dz, matrix);
+    } else if (operation == 'r') {
+      if (axis == 'x') {
+        rotateX(-1, matrix);
+      } else if (axis == 'y') {
+        rotateY(-1, matrix);
+      } else if (axis == 'z') {
+        rotateZ(-1, matrix);
+      }
+    } else if (operation == 's') {
+      if (axis == 'x') {
+        dx = 1.01;
+        dy = 1;
+        dz = 1;
+      } else if (axis == 'y') {
+        dx = 1;
+        dy = 1.01;
+        dz = 1;
+      } else if (axis == 'z') {
+        dx = 1;
+        dy = 1;
+        dz = 1.01;
+      }
+      scale(2-dx, 2-dy, 2-dz, matrix);
+    }
   }
 }
 
@@ -169,6 +307,8 @@ int main( void )
   glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
   
   do{
+    controlModel(g_vertex_buffer_data);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
     
     // Clear the screen
     glClear( GL_COLOR_BUFFER_BIT );
