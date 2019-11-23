@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		3A6E6D0F2363610D00113C83 /* shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shader.hpp; sourceTree = "<group>"; };
-		3AC39FEF233BD6B7002F22AF /* Challenge2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Challenge2; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC39FEF233BD6B7002F22AF /* Challenge3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Challenge3; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC39FF2233BD6B7002F22AF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3ADEF1ED233BDEEC0047B3F3 /* SimpleTransform.vertexshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = SimpleTransform.vertexshader; sourceTree = "<group>"; };
 		3ADEF1EE233BDEF40047B3F3 /* SingleColor.fragmentshader */ = {isa = PBXFileReference; lastKnownFileType = text; path = SingleColor.fragmentshader; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		3AC39FF0233BD6B7002F22AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3AC39FEF233BD6B7002F22AF /* Challenge2 */,
+				3AC39FEF233BD6B7002F22AF /* Challenge3 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,9 +100,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3AC39FEE233BD6B7002F22AF /* Challenge2 */ = {
+		3AC39FEE233BD6B7002F22AF /* Challenge3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3AC39FF6233BD6B7002F22AF /* Build configuration list for PBXNativeTarget "Challenge2" */;
+			buildConfigurationList = 3AC39FF6233BD6B7002F22AF /* Build configuration list for PBXNativeTarget "Challenge3" */;
 			buildPhases = (
 				3AC39FEB233BD6B7002F22AF /* Sources */,
 				3AC39FEC233BD6B7002F22AF /* Frameworks */,
@@ -112,9 +112,9 @@
 			);
 			dependencies = (
 			);
-			name = Challenge2;
+			name = Challenge3;
 			productName = Challenge2;
-			productReference = 3AC39FEF233BD6B7002F22AF /* Challenge2 */;
+			productReference = 3AC39FEF233BD6B7002F22AF /* Challenge3 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -132,7 +132,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3AC39FEA233BD6B7002F22AF /* Build configuration list for PBXProject "Challenge2" */;
+			buildConfigurationList = 3AC39FEA233BD6B7002F22AF /* Build configuration list for PBXProject "Challenge3" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -144,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3AC39FEE233BD6B7002F22AF /* Challenge2 */,
+				3AC39FEE233BD6B7002F22AF /* Challenge3 */,
 			);
 		};
 /* End PBXProject section */
@@ -304,7 +304,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3AC39FEA233BD6B7002F22AF /* Build configuration list for PBXProject "Challenge2" */ = {
+		3AC39FEA233BD6B7002F22AF /* Build configuration list for PBXProject "Challenge3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3AC39FF4233BD6B7002F22AF /* Debug */,
@@ -313,7 +313,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3AC39FF6233BD6B7002F22AF /* Build configuration list for PBXNativeTarget "Challenge2" */ = {
+		3AC39FF6233BD6B7002F22AF /* Build configuration list for PBXNativeTarget "Challenge3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3AC39FF7233BD6B7002F22AF /* Debug */,
